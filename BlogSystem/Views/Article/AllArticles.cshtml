@@ -1,0 +1,35 @@
+﻿@model List<BlogSystem.Models.Article>
+
+@{
+    ViewBag.Title = "All Articles";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var article in Model)
+        {
+            <div class="col-sm-6">
+                <article>
+                    <header>
+                        <h2>
+                            @Html.ActionLink(@article.Title, "Details", "Article", new { @id = article.Id }, null)
+                        </h2>
+                        <h5 class="author">
+                            Date: @article.DatePost
+                        </h5>
+                    </header>
+                    <p>
+                        @article.PreviewText(article.Content)
+                        <small class="btn-link">@Html.ActionLink("Read more", "Details", "Article", new { @id = article.Id }, null)</small>
+                    </p>
+                    <footer class="pull-right">
+                        <small class="author">
+                            Author: @article.Author.FullName
+                        </small>
+                    </footer>
+                </article>
+            </div>
+        }
+    </div>
+</div>
+<hr />

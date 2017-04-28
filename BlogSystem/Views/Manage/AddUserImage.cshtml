@@ -1,0 +1,26 @@
+﻿@model BlogSystem.Models.ApplicationUser
+@{
+    ViewBag.Title = "Add User Image";
+}
+
+<div class="container">
+    <div class="well">
+        <h2>Add User Image</h2>
+        @using (Html.BeginForm("AddUserImage", "Manage", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+        {
+            <div class="form-group">
+                @Html.Label("image", "User Image", new { @class = "control-label col-sm-4" })
+                <div class="col-sm-4">
+                    @Html.TextBox("image", null, new { type = "file", @class = "form-control" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-4">
+                    @Html.ActionLink("Cancel", "Index", "Manage", null, new { @class = "btn btn-default" })
+                    <input type="submit" value="Upload" class="btn btn-success" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
